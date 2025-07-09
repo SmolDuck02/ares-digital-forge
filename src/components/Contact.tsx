@@ -3,6 +3,22 @@ import React from 'react';
 import { Mail, MessageSquare, Phone, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
+  const handleEmailClick = () => {
+    window.open('mailto:hello@ares.digital', '_blank');
+  };
+
+  const handlePhoneClick = () => {
+    window.open('tel:+639171234567', '_blank');
+  };
+
+  const handleScheduleConsultation = () => {
+    window.open('https://calendly.com/ares-digital', '_blank');
+  };
+
+  const handleViewCaseStudies = () => {
+    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="py-24 px-4 relative">
       <div className="max-w-4xl mx-auto">
@@ -23,7 +39,7 @@ const Contact: React.FC = () => {
               Connect Directly
             </h3>
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={handleEmailClick}>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <Mail className="text-primary" size={20} />
                 </div>
@@ -33,17 +49,17 @@ const Contact: React.FC = () => {
                 </div>
               </div>
               
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={handlePhoneClick}>
                 <div className="w-12 h-12 bg-accent/10 rounded-lg flex items-center justify-center">
                   <Phone className="text-accent" size={20} />
                 </div>
                 <div>
                   <div className="text-sm font-display text-muted-foreground uppercase tracking-luxury">Direct</div>
-                  <div className="font-sans text-foreground">+1 (555) 123-4567</div>
+                  <div className="font-sans text-foreground">+63 917 123 4567</div>
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 cursor-pointer hover:opacity-80 transition-opacity" onClick={handleScheduleConsultation}>
                 <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
                   <MessageSquare className="text-primary" size={20} />
                 </div>
@@ -59,7 +75,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm font-display text-muted-foreground uppercase tracking-luxury">Studio</div>
-                  <div className="font-sans text-foreground">San Francisco, CA</div>
+                  <div className="font-sans text-foreground">Cebu City, Philippines</div>
                 </div>
               </div>
             </div>
@@ -113,10 +129,10 @@ const Contact: React.FC = () => {
               Let's begin the conversation.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="premium-button">
+              <button className="premium-button" onClick={handleScheduleConsultation}>
                 Schedule Consultation
               </button>
-              <button className="premium-button-outline">
+              <button className="premium-button-outline" onClick={handleViewCaseStudies}>
                 View Case Studies
               </button>
             </div>
@@ -130,7 +146,7 @@ const Contact: React.FC = () => {
                 <span>Available for Strategic Partnerships</span>
               </div>
               <div className="text-muted-foreground/70">
-                © 2024 Ares Digital • Precision by Design • Excellence by Execution
+                © 2025 Ares Digital • Precision by Design • Excellence by Execution
               </div>
             </div>
           </div>

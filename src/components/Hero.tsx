@@ -10,6 +10,14 @@ const Hero: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  const handleExploreWork = () => {
+    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleStartConversation = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Ambient background elements */}
@@ -49,13 +57,13 @@ const Hero: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-              <button className="premium-button group">
+              <button className="premium-button group" onClick={handleExploreWork}>
                 <span className="flex items-center gap-2">
                   Explore Our Work
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
                 </span>
               </button>
-              <button className="premium-button-outline">
+              <button className="premium-button-outline" onClick={handleStartConversation}>
                 Start a Conversation
               </button>
             </div>
