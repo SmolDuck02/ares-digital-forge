@@ -53,13 +53,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
-				// Ares brand colors
-				'ares-black': '#0a0a0a',
-				'ares-red': '#ff0a3c',
-				'ares-blue': '#00ffff',
-				'ares-green': '#00ff41',
-				'ares-violet': '#8b00ff',
-				'ares-gray': '#1a1a1a',
+				// Ares premium brand colors
+				'ares-charcoal': '#1a1a1a',
+				'ares-navy': '#0f1419',
+				'ares-graphite': '#2a2a2a',
+				'ares-gold': '#d4af37',
+				'ares-copper': '#b87333',
+				'ares-silver': '#c0c0c0',
+				'ares-pearl': '#f8f8f8',
+				'ares-slate': '#64748b',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -83,49 +85,58 @@ export default {
 						height: '0'
 					}
 				},
-				'glitch': {
-					'0%': { transform: 'translate(0)' },
-					'20%': { transform: 'translate(-2px, 2px)' },
-					'40%': { transform: 'translate(-2px, -2px)' },
-					'60%': { transform: 'translate(2px, 2px)' },
-					'80%': { transform: 'translate(2px, -2px)' },
-					'100%': { transform: 'translate(0)' }
-				},
-				'flicker': {
-					'0%, 100%': { opacity: '1' },
-					'50%': { opacity: '0.3' }
-				},
-				'terminal-blink': {
-					'0%, 50%': { opacity: '1' },
-					'51%, 100%': { opacity: '0' }
-				},
-				'slide-up': {
-					'0%': { transform: 'translateY(100px)', opacity: '0' },
-					'100%': { transform: 'translateY(0)', opacity: '1' }
-				},
-				'neon-pulse': {
+				'subtle-glow': {
 					'0%, 100%': { 
-						boxShadow: '0 0 5px currentColor, 0 0 10px currentColor, 0 0 20px currentColor',
-						textShadow: '0 0 5px currentColor'
+						boxShadow: '0 0 20px rgba(212, 175, 55, 0.1)',
+						opacity: '0.8'
 					},
 					'50%': { 
-						boxShadow: '0 0 2px currentColor, 0 0 5px currentColor, 0 0 10px currentColor',
-						textShadow: '0 0 2px currentColor'
+						boxShadow: '0 0 40px rgba(212, 175, 55, 0.2)',
+						opacity: '1'
 					}
+				},
+				'fade-in-up': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateY(30px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateY(0)'
+					}
+				},
+				'slide-in-elegant': {
+					'0%': { 
+						opacity: '0',
+						transform: 'translateX(-20px)'
+					},
+					'100%': { 
+						opacity: '1',
+						transform: 'translateX(0)'
+					}
+				},
+				'gentle-pulse': {
+					'0%, 100%': { opacity: '0.7' },
+					'50%': { opacity: '1' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
-				'glitch': 'glitch 0.5s infinite',
-				'flicker': 'flicker 2s infinite',
-				'terminal-blink': 'terminal-blink 1s infinite',
-				'slide-up': 'slide-up 0.6s ease-out',
-				'neon-pulse': 'neon-pulse 2s ease-in-out infinite'
+				'subtle-glow': 'subtle-glow 3s ease-in-out infinite',
+				'fade-in-up': 'fade-in-up 0.8s ease-out',
+				'slide-in-elegant': 'slide-in-elegant 0.6s ease-out',
+				'gentle-pulse': 'gentle-pulse 2s ease-in-out infinite'
 			},
 			fontFamily: {
-				'mono': ['Monaco', 'Menlo', 'Ubuntu Mono', 'monospace'],
-				'brutalist': ['Impact', 'Franklin Gothic Bold', 'sans-serif']
+				'serif': ['Playfair Display', 'Times New Roman', 'serif'],
+				'sans': ['Inter', 'system-ui', 'sans-serif'],
+				'display': ['Space Grotesk', 'system-ui', 'sans-serif']
+			},
+			fontSize: {
+				'display-xl': ['5rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+				'display-lg': ['4rem', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+				'display-md': ['3rem', { lineHeight: '1.2', letterSpacing: '-0.01em' }],
 			}
 		}
 	},

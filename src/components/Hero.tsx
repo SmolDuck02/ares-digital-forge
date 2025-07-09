@@ -1,94 +1,77 @@
 
 import React, { useState, useEffect } from 'react';
-import GlitchText from './GlitchText';
-import TypewriterEffect from './TypewriterEffect';
-import { AlertTriangle, Terminal, Zap } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 
 const Hero: React.FC = () => {
-  const [showWarning, setShowWarning] = useState(false);
-  const [showTypewriter, setShowTypewriter] = useState(false);
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    const timer1 = setTimeout(() => setShowWarning(true), 500);
-    const timer2 = setTimeout(() => setShowTypewriter(true), 1500);
-    
-    return () => {
-      clearTimeout(timer1);
-      clearTimeout(timer2);
-    };
+    const timer = setTimeout(() => setShowContent(true), 300);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="grid grid-cols-12 grid-rows-12 h-full w-full">
-          {Array.from({ length: 144 }).map((_, i) => (
-            <div key={i} className="border border-ares-green"></div>
-          ))}
-        </div>
+      {/* Ambient background elements */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl animate-subtle-glow"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-gradient-to-r from-accent/10 to-primary/10 rounded-full blur-3xl animate-subtle-glow" style={{ animationDelay: '2s' }}></div>
       </div>
 
-      {/* Animated background elements */}
-      <div className="absolute top-20 left-20 text-ares-red opacity-20 animate-pulse">
-        <Terminal size={120} />
+      {/* Floating geometric elements */}
+      <div className="absolute top-20 right-20 text-primary/20 animate-gentle-pulse">
+        <Sparkles size={60} />
       </div>
-      <div className="absolute bottom-20 right-20 text-ares-blue opacity-20 animate-bounce">
-        <Zap size={80} />
+      <div className="absolute bottom-32 left-20 text-accent/20 animate-gentle-pulse" style={{ animationDelay: '1s' }}>
+        <Zap size={40} />
       </div>
 
       <div className="text-center z-10 max-w-6xl mx-auto px-4">
-        {/* Warning Symbol */}
-        {showWarning && (
-          <div className="flex justify-center mb-8 animate-slide-up">
-            <AlertTriangle 
-              size={80} 
-              className="text-ares-red animate-neon-pulse" 
-            />
-          </div>
+        {showContent && (
+          <>
+            {/* Main Heading */}
+            <div className="animate-fade-in-up">
+              <h1 className="font-serif font-bold text-display-xl mb-8 text-foreground tracking-luxury">
+                Digital Systems.
+                <br />
+                <span className="text-gradient">Artistic Precision.</span>
+              </h1>
+            </div>
+
+            {/* Subtitle */}
+            <div className="animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+              <p className="text-xl md:text-2xl font-sans text-muted-foreground mb-12 max-w-4xl mx-auto leading-relaxed">
+                Ares crafts high-impact digital solutions with vision, strategy, and execution. 
+                <br className="hidden md:block" />
+                Rooted in art, backed by logic.
+              </p>
+            </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+              <button className="premium-button group">
+                <span className="flex items-center gap-2">
+                  Explore Our Work
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform duration-200" />
+                </span>
+              </button>
+              <button className="premium-button-outline">
+                Start a Conversation
+              </button>
+            </div>
+
+            {/* Refined status indicator */}
+            <div className="mt-20 font-sans text-muted-foreground text-sm animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+              <div className="flex justify-center items-center gap-3 mb-2">
+                <div className="w-2 h-2 bg-primary rounded-full animate-gentle-pulse"></div>
+                <span className="tracking-wide">Available for Select Projects</span>
+              </div>
+              <div className="opacity-70">
+                Precision Engineering • Strategic Design • Lasting Impact
+              </div>
+            </div>
+          </>
         )}
-
-        {/* Main Heading */}
-        <h1 className="text-6xl md:text-8xl font-brutalist font-black mb-6">
-          <GlitchText 
-            text="⚠️ YOU'RE ENTERING" 
-            className="block text-ares-red mb-4"
-          />
-          <span className="text-transparent bg-gradient-to-r from-ares-blue via-ares-green to-ares-violet bg-clip-text animate-neon-pulse">
-            THE FORGE
-          </span>
-        </h1>
-
-        {/* Subtitle */}
-        <div className="text-xl md:text-2xl font-terminal text-ares-green mb-12 max-w-4xl mx-auto">
-          {showTypewriter && (
-            <TypewriterEffect 
-              text="Where your ideas are melted, reforged, and deployed into digital legends."
-              speed={30}
-            />
-          )}
-        </div>
-
-        {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <button className="brutalist-btn text-lg">
-            ENTER THE CHAOS
-          </button>
-          <button className="px-6 py-3 border-2 border-ares-blue text-ares-blue font-brutalist uppercase tracking-wider hover:bg-ares-blue hover:text-ares-black transition-all duration-200">
-            VIEW MANIFESTO
-          </button>
-        </div>
-
-        {/* Terminal Status */}
-        <div className="mt-16 font-terminal text-ares-green text-sm">
-          <div className="flex justify-center items-center gap-2">
-            <span className="animate-terminal-blink">█</span>
-            <span>SYSTEM STATUS: READY FOR CHAOS</span>
-          </div>
-          <div className="mt-2 opacity-70">
-            Connection established • Terminal active • Ready to deploy
-          </div>
-        </div>
       </div>
     </section>
   );

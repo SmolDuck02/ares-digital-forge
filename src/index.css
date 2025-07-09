@@ -3,8 +3,8 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import brutalist font */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+/* Import elegant fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
 
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
@@ -12,35 +12,35 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 95%;
+    --background: 220 8% 8%;
+    --foreground: 0 0% 98%;
 
-    --card: 0 0% 8%;
+    --card: 220 8% 12%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 8%;
+    --popover: 220 8% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 0 84% 60%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 45 82% 52%;
+    --primary-foreground: 220 8% 8%;
 
-    --secondary: 210 40% 8%;
+    --secondary: 220 8% 16%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 15%;
+    --muted: 220 8% 20%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 195 100% 50%;
-    --accent-foreground: 0 0% 10%;
+    --accent: 33 56% 46%;
+    --accent-foreground: 0 0% 98%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 195 100% 50%;
+    --border: 220 8% 20%;
+    --input: 220 8% 16%;
+    --ring: 45 82% 52%;
 
-    --radius: 0.25rem;
+    --radius: 0.5rem;
   }
 }
 
@@ -50,10 +50,12 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-ares-black text-foreground font-mono;
+    @apply bg-ares-charcoal text-foreground font-sans;
     background-image: 
-      radial-gradient(circle at 25% 25%, #ff0a3c22 0%, transparent 50%),
-      radial-gradient(circle at 75% 75%, #00ffff22 0%, transparent 50%);
+      radial-gradient(circle at 20% 80%, rgba(212, 175, 55, 0.05) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(184, 115, 51, 0.03) 0%, transparent 50%),
+      linear-gradient(135deg, rgba(15, 20, 25, 0.8) 0%, rgba(26, 26, 26, 0.9) 100%);
+    background-attachment: fixed;
   }
 
   /* Custom scrollbar */
@@ -62,87 +64,85 @@ All colors MUST be HSL.
   }
 
   ::-webkit-scrollbar-track {
-    background: #0a0a0a;
+    background: #1a1a1a;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #ff0a3c;
+    background: #d4af37;
     border-radius: 4px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #00ffff;
+    background: #b87333;
   }
 }
 
 @layer components {
-  .glitch-text {
+  .elegant-card {
+    @apply bg-card/50 backdrop-blur-sm border border-border/50 rounded-lg;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .premium-button {
+    @apply px-8 py-4 bg-primary text-primary-foreground font-display font-medium tracking-wide;
+    @apply border border-primary/20 rounded-md transition-all duration-300;
+    @apply hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+
+  .premium-button-outline {
+    @apply px-8 py-4 bg-transparent text-primary font-display font-medium tracking-wide;
+    @apply border border-primary rounded-md transition-all duration-300;
+    @apply hover:bg-primary hover:text-primary-foreground hover:shadow-lg hover:shadow-primary/20;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary/50;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent;
+    background-size: 200% 100%;
+    animation: gradient-shift 8s ease-in-out infinite;
+  }
+
+  .section-divider {
+    @apply w-full h-px bg-gradient-to-r from-transparent via-border to-transparent;
+  }
+
+  .floating-accent {
     position: relative;
-    color: #00ffff;
-    font-weight: bold;
   }
 
-  .glitch-text::before,
-  .glitch-text::after {
-    content: attr(data-text);
+  .floating-accent::before {
+    content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-
-  .glitch-text::before {
-    animation: glitch 0.3s infinite;
-    color: #ff0a3c;
-    z-index: -1;
-  }
-
-  .glitch-text::after {
-    animation: glitch 0.3s infinite reverse;
-    color: #00ff41;
-    z-index: -2;
-  }
-
-  .terminal-window {
-    @apply bg-ares-gray border border-ares-green rounded-sm;
-    box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
-  }
-
-  .terminal-header {
-    @apply bg-ares-black border-b border-ares-green p-2 flex items-center gap-2;
-  }
-
-  .terminal-dot {
-    @apply w-3 h-3 rounded-full;
-  }
-
-  .neon-border {
-    border: 1px solid currentColor;
-    box-shadow: 
-      0 0 5px currentColor,
-      inset 0 0 5px currentColor;
-  }
-
-  .brutalist-btn {
-    @apply px-6 py-3 bg-ares-red text-white font-brutalist uppercase tracking-wider border-2 border-ares-red;
-    transform: translate(0, 0);
-    transition: all 0.1s ease;
-  }
-
-  .brutalist-btn:hover {
-    @apply bg-transparent text-ares-red;
-    transform: translate(2px, 2px);
-    box-shadow: -2px -2px 0 #ff0a3c;
+    inset: -1px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(184, 115, 51, 0.1));
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+    -webkit-mask-composite: xor;
   }
 }
 
 @layer utilities {
-  .font-brutalist {
-    font-family: 'Orbitron', 'Impact', 'Franklin Gothic Bold', sans-serif;
+  .font-display {
+    font-family: 'Space Grotesk', 'system-ui', 'sans-serif';
   }
 
-  .font-terminal {
-    font-family: 'Share Tech Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  .font-serif {
+    font-family: 'Playfair Display', 'Times New Roman', 'serif';
   }
+
+  .font-sans {
+    font-family: 'Inter', 'system-ui', 'sans-serif';
+  }
+
+  .tracking-luxury {
+    letter-spacing: 0.025em;
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
