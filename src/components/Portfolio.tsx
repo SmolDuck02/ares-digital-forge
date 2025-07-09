@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { ArrowUpRight, Code, Database, Cog, Layers } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 interface Project {
   id: string;
@@ -9,43 +10,49 @@ interface Project {
   description: string;
   technologies: string[];
   accent: string;
+  route: string;
 }
 
 const Portfolio: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const navigate = useNavigate();
   
   const projects: Project[] = [
     {
       id: '001',
       title: 'Enterprise Data Architecture',
       category: 'architecture',
-      description: 'Complete system redesign for a Fortune 500 company, handling millions of daily transactions with zero downtime migration.',
+      description: 'Complete system redesign for a leading Philippine banking institution, handling millions of daily transactions with zero downtime migration.',
       technologies: ['Microservices', 'Cloud Native', 'Event Sourcing', 'CQRS'],
-      accent: 'primary'
+      accent: 'primary',
+      route: '/enterprise-architecture'
     },
     {
       id: '002', 
       title: 'Real-time Analytics Platform',
       category: 'engineering',
-      description: 'High-performance analytics dashboard processing terabytes of data with sub-second response times.',
+      description: 'High-performance analytics dashboard for a Cebu-based e-commerce platform, processing terabytes of data with sub-second response times.',
       technologies: ['React', 'Node.js', 'Redis', 'WebSocket'],
-      accent: 'accent'
+      accent: 'accent',
+      route: '/analytics-platform'
     },
     {
       id: '003',
       title: 'Digital Transformation Strategy',
       category: 'consultation',
-      description: 'Six-month engagement resulting in 40% operational efficiency increase and modernized technology stack.',
+      description: 'Six-month strategic engagement with a traditional Filipino manufacturing company, resulting in 40% operational efficiency increase.',
       technologies: ['Strategy', 'Architecture', 'Change Management', 'Training'],
-      accent: 'primary'
+      accent: 'primary',
+      route: '/digital-transformation'
     },
     {
       id: '004',
       title: 'Distributed Computing Platform',
       category: 'architecture',
-      description: 'Scalable computing infrastructure supporting machine learning workloads across multiple cloud providers.',
+      description: 'Scalable computing infrastructure for a Cebu-based AI research lab, supporting machine learning workloads across multiple cloud providers.',
       technologies: ['Kubernetes', 'Terraform', 'ML Ops', 'Multi-Cloud'],
-      accent: 'accent'
+      accent: 'accent',
+      route: '/computing-platform'
     }
   ];
 
@@ -59,6 +66,10 @@ const Portfolio: React.FC = () => {
   const filteredProjects = activeFilter === 'all' 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
+
+  const handleProjectClick = (project: Project) => {
+    navigate(project.route);
+  };
 
   return (
     <section className="py-24 px-4 relative">
@@ -99,6 +110,7 @@ const Portfolio: React.FC = () => {
               key={project.id}
               className="elegant-card floating-accent p-8 group cursor-pointer transition-all duration-500 hover:scale-[1.02] animate-fade-in-up"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => handleProjectClick(project)}
             >
               {/* Project Header */}
               <div className="flex justify-between items-start mb-6">
@@ -151,7 +163,10 @@ const Portfolio: React.FC = () => {
               Every project begins with understanding your vision. Let's discuss how we can 
               bring precision and artistry to your next digital initiative.
             </p>
-            <button className="premium-button">
+            <button 
+              className="premium-button"
+              onClick={() => window.open('mailto:ursonalj@gmail.com', '_blank')}
+            >
               Start a Conversation
             </button>
           </div>

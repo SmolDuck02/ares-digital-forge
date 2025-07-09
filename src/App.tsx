@@ -1,3 +1,4 @@
+
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -5,6 +6,10 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import EnterpriseArchitecture from "./pages/EnterpriseArchitecture";
+import AnalyticsPlatform from "./pages/AnalyticsPlatform";
+import DigitalTransformation from "./pages/DigitalTransformation";
+import ComputingPlatform from "./pages/ComputingPlatform";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +21,10 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/enterprise-architecture" element={<EnterpriseArchitecture />} />
+          <Route path="/analytics-platform" element={<AnalyticsPlatform />} />
+          <Route path="/digital-transformation" element={<DigitalTransformation />} />
+          <Route path="/computing-platform" element={<ComputingPlatform />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

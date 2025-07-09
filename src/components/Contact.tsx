@@ -4,7 +4,7 @@ import { Mail, MessageSquare, Phone, MapPin } from 'lucide-react';
 
 const Contact: React.FC = () => {
   const handleEmailClick = () => {
-    window.open('mailto:hello@ares.digital', '_blank');
+    window.open('mailto:ursonalj@gmail.com', '_blank');
   };
 
   const handlePhoneClick = () => {
@@ -45,7 +45,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm font-display text-muted-foreground uppercase tracking-luxury">Email</div>
-                  <div className="font-sans text-foreground">hello@ares.digital</div>
+                  <div className="font-sans text-foreground">ursonalj@gmail.com</div>
                 </div>
               </div>
               
