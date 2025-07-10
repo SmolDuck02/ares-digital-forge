@@ -1,4 +1,5 @@
 # Welcome to Ares
+(a project in progress)
 
 ## What technologies are used for this project?
 
