@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import AresLogo from './AresLogo';
 import { Menu, X, ArrowRight } from 'lucide-react';
@@ -13,7 +12,7 @@ const Navigation: React.FC = () => {
   ];
 
   const handleStartProject = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('project-inquiry')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   const handleNavClick = (href: string) => {

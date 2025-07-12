@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 
@@ -15,7 +14,7 @@ const Hero: React.FC = () => {
   };
 
   const handleStartConversation = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+    window.open('mailto:ursonalj@gmail.com', '_blank');
   };
 
   return (

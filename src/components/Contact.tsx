@@ -8,11 +8,12 @@ const Contact: React.FC = () => {
   };
 
   const handlePhoneClick = () => {
-    window.open('tel:+639171234567', '_blank');
+    window.open('tel:+639159929878', '_blank');
   };
 
   const handleScheduleConsultation = () => {
-    window.open('https://calendly.com/ares-digital', '_blank');
+    // Updated Calendly link with specific scheduling parameters
+    window.open('https://calendly.com/ursonalj/consultation?hide_gdpr_banner=1&primary_color=b8860b', '_blank');
   };
 
   const handleViewCaseStudies = () => {
@@ -55,7 +56,7 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <div className="text-sm font-display text-muted-foreground uppercase tracking-luxury">Direct</div>
-                  <div className="font-sans text-foreground">+63 917 123 4567</div>
+                  <div className="font-sans text-foreground">+63 915 992 9878</div>
                 </div>
               </div>
 
@@ -66,6 +67,7 @@ const Contact: React.FC = () => {
                 <div>
                   <div className="text-sm font-display text-muted-foreground uppercase tracking-luxury">Consultation</div>
                   <div className="font-sans text-foreground">Schedule Strategy Call</div>
+                  <div className="text-xs text-muted-foreground/70">Saturdays: 10AM - 5PM</div>
                 </div>
               </div>
 

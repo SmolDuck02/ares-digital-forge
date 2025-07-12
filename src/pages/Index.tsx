@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import Hero from '../components/Hero';
 import Manifesto from '../components/Manifesto';
 import Portfolio from '../components/Portfolio';
+import ProjectInquiry from '../components/ProjectInquiry';
 import Contact from '../components/Contact';
 
 const Index = () => {
@@ -22,6 +23,10 @@ const Index = () => {
         
         <section id="portfolio">
           <Portfolio />
+        </section>
+        
+        <section id="project-inquiry">
+          <ProjectInquiry />
         </section>
         
         <section id="contact">
