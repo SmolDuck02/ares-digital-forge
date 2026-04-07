@@ -11,7 +11,7 @@ const GlitchText: React.FC<GlitchTextProps> = ({ text, className = '' }) => {
   
   useEffect(() => {
     const glitchChars = '!@#$%^&*()_+-=[]{}|;:,.<>?';
-    let intervalId: NodeJS.Timeout;
+    let intervalId: ReturnType<typeof setInterval>;
     
     const startGlitch = () => {
       intervalId = setInterval(() => {
